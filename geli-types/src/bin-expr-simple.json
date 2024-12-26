@@ -1,0 +1,115 @@
+{
+  "settings": {
+    "separate_output_fns": false
+  },
+  "nodes": [
+    {
+      "name": "Parser",
+      "type": "parser",
+      "rules": [
+        {
+          "name": "Expr",
+          "type": "structural",
+          "fragments": [
+            {
+              "name": "expr",
+              "type": "precedence",
+              "atom": "PrimaryExpr",
+              "rules": [
+                {
+                  "rule": "Assign",
+                  "precedence": 0,
+                  "associativity": "right"
+                },
+                {
+                  "rule": "Eq",
+                  "precedence": 1,
+                  "associativity": "none"
+                },
+                {
+                  "rule": "Add",
+                  "precedence": 2,
+                  "associativity": "left"
+                },
+                {
+                  "rule": "Sub",
+                  "precedence": 2,
+                  "associativity": "left"
+                },
+                {
+                  "rule": "Mul",
+                  "precedence": 3,
+                  "associativity": "left"
+                },
+                {
+                  "rule": "Div",
+                  "precedence": 3,
+                  "associativity": "left"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PrimaryExpr",
+          "type": "super_type",
+          "options": ["UnaryExpr", "Number"]
+        },
+        {
+          "name": "UnaryExpr",
+          "type": "structural",
+          "fragments": [
+            {
+              "name": "op",
+              "type": "parser",
+              "rule": "UnaryOp"
+            },
+            {
+              "name": "inner",
+              "type": "parser",
+              "rule": "PrimaryExpr"
+            }
+          ]
+        },
+        {
+          "name": "UnaryOp",
+          "type": "super_type",
+          "options": ["Neg", "Deref", "Ref"]
+        },
+        {
+          "name": "Ref",
+          "type": "structural",
+          "fragments": [
+            {
+              "type": "token",
+              "rule": "Ref"
+            },
+            {
+              "name": "mutable",
+              "type": "optional",
+              "inner": {
+                "type": "literal",
+                "value": "mut"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Neg",
+          "type": "pass_through",
+          "source": "Sub"
+        },
+        {
+          "name": "Deref",
+          "type": "pass_through",
+          "source": "Mul"
+        },
+        {
+          "name": "Number",
+          "type": "pass_through"
+        }
+      ]
+    }
+  ],
+  "edges": []
+}

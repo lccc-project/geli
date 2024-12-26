@@ -1,0 +1,9 @@
+[package]
+name = "geli-core"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+geli-types = { path = "../geli-types" }
+serde_json = "1"

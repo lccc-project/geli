@@ -1,0 +1,9 @@
+[workspace]
+members = ["geli-frontend/src-tauri", "geli-cli", "geli-core", "geli-macros", "geli-types"]
+default-members = ["geli-cli"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+authors = ["Ray Redondo (rdredondo@lcdev.xyz)"]
+edition = "2021"

@@ -1,0 +1,11 @@
+[package]
+name = "geli-types"
+edition = "2021"
+version.workspace = true
+authors.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+
+[dev-dependencies]
+serde_json = "1"
