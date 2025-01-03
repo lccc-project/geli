@@ -1,0 +1,9 @@
+[package]
+name = "geli-backend"
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+geli-types.workspace = true
+regex-syntax.workspace = true

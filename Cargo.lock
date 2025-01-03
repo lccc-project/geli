@@ -1326,6 +1326,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "geli-backend"
+version = "0.1.0"
+dependencies = [
+ "geli-types",
+ "regex-syntax",
+]
+
+[[package]]
 name = "geli-cli"
 version = "0.1.0"
 dependencies = [

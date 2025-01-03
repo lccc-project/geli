@@ -1,9 +1,26 @@
 [workspace]
-members = ["geli-frontend/src-tauri", "geli-cli", "geli-core", "geli-macros", "geli-types"]
+members = [
+    "geli-frontend/src-tauri",
+    "geli-cli",
+    "geli-core",
+    "geli-macros",
+    "geli-types",
+    "geli-backend",
+]
 default-members = ["geli-cli"]
 resolver = "2"
 
 [workspace.package]
 version = "0.1.0"
-authors = ["Ray Redondo (rdredondo@lcdev.xyz)"]
+authors = [
+    "Ray Redondo (rdredondo@lcdev.xyz)",
+    "Connor Horman <chorman@lcdev.xyz>",
+]
 edition = "2021"
+
+
+[workspace.dependencies]
+geli-core = { path = "geli-core" }
+geli-types = { path = "geli-types" }
+geli-backend = { path = "geli-backend" }
+regex-syntax = "0.8.5"
